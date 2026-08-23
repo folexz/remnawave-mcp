@@ -14,6 +14,8 @@
  * Read and write are separated by two tokens. Without a write token, mutating tools are not
  * registered and the dispatcher refuses mutations.
  */
+import { realpathSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
@@ -89,7 +91,19 @@ async function main() {
 }
 
 // Only run when executed directly, so tests can import buildServer().
-if (process.argv[1] && import.meta.url === `file://${process.argv[1]}`) {
+// argv[1] may be a symlink (npm/npx put one in the bin dir) while import.meta.url
+// always resolves to the real file, so compare the resolved paths, not the raw strings.
+function isDirectRun(): boolean {
+  const entry = process.argv[1];
+  if (!entry) return false;
+  try {
+    return import.meta.url === pathToFileURL(realpathSync(entry)).href;
+  } catch {
+    return false;
+  }
+}
+
+if (isDirectRun()) {
   main().catch((err) => {
     console.error("Fatal:", (err as Error).message);
     process.exit(1);

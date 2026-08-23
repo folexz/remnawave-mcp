@@ -1,6 +1,6 @@
 {
   "name": "@folexz/remnawave-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server for the Remnawave API (v3.3.2) — spec-driven tools, two-token least-privilege auth, tiered tool exposure",
   "type": "module",
   "license": "MIT",
