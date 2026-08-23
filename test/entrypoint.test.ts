@@ -10,8 +10,8 @@ import { join, resolve } from "node:path";
 
 const DIST = resolve(import.meta.dirname, "..", "dist", "index.js");
 
-function startVia(target) {
-  return new Promise((done) => {
+function startVia(target: string): Promise<string> {
+  return new Promise<string>((done) => {
     const p = spawn(process.execPath, [target], {
       env: {
         ...process.env,
@@ -21,7 +21,7 @@ function startVia(target) {
       stdio: ["pipe", "pipe", "pipe"],
     });
     let err = "";
-    p.stderr.on("data", (d) => {
+    p.stderr.on("data", (d: Buffer) => {
       err += d;
       if (err.includes("ready against")) {
         p.kill();
