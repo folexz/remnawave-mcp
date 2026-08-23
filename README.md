@@ -1,14 +1,17 @@
 # remnawave-mcp
 
-[![npm version](https://img.shields.io/npm/v/remnawave-mcp.svg)](https://www.npmjs.com/package/remnawave-mcp)
+[![npm version](https://img.shields.io/npm/v/@folexz/remnawave-mcp.svg)](https://www.npmjs.com/package/@folexz/remnawave-mcp)
 [![CI](https://github.com/folexz/remnawave-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/folexz/remnawave-mcp/actions/workflows/ci.yml)
-[![license](https://img.shields.io/npm/l/remnawave-mcp.svg)](./LICENSE)
-[![node](https://img.shields.io/node/v/remnawave-mcp.svg)](https://nodejs.org)
+[![license](https://img.shields.io/npm/l/@folexz/remnawave-mcp.svg)](./LICENSE)
+[![node](https://img.shields.io/node/v/@folexz/remnawave-mcp.svg)](https://nodejs.org)
 
 An [MCP](https://modelcontextprotocol.io) server for the [Remnawave](https://remna.st) panel API.
 
+> Published under the `@folexz` scope: the unscoped `remnawave-mcp` name on npm belongs to an
+> unrelated project that targets Remnawave 2.7.4 and does not work with 2.8.0+.
+
 ```bash
-npx -y remnawave-mcp   # configured via REMNAWAVE_BASE_URL + REMNAWAVE_API_TOKEN_READ/_WRITE
+npx -y @folexz/remnawave-mcp   # configured via REMNAWAVE_BASE_URL + REMNAWAVE_API_TOKEN_READ/_WRITE
 ```
 
 It covers **all 205 operations across 28 controllers** of Remnawave API **v3.3.2** — users,
@@ -79,7 +82,7 @@ Read-only (recommended default):
 claude mcp add remnawave --scope user \
   --env REMNAWAVE_BASE_URL=https://panel.example.com \
   --env REMNAWAVE_API_TOKEN_READ=your_read_token \
-  -- npx -y remnawave-mcp@latest
+  -- npx -y @folexz/remnawave-mcp@latest
 ```
 
 With mutations enabled and typed tools for the everyday controllers:
@@ -90,7 +93,7 @@ claude mcp add remnawave --scope user \
   --env REMNAWAVE_API_TOKEN_READ=your_read_token \
   --env REMNAWAVE_API_TOKEN_WRITE=your_write_token \
   --env REMNAWAVE_TOOL_PROFILE=core \
-  -- npx -y remnawave-mcp@latest
+  -- npx -y @folexz/remnawave-mcp@latest
 ```
 
 `@latest` makes npx resolve the newest published version on each launch. To run a local build,
@@ -103,7 +106,7 @@ replace the command with `node /absolute/path/to/remnawave-mcp/dist/index.js`.
   "mcpServers": {
     "remnawave": {
       "command": "npx",
-      "args": ["-y", "remnawave-mcp@latest"],
+      "args": ["-y", "@folexz/remnawave-mcp@latest"],
       "env": {
         "REMNAWAVE_BASE_URL": "https://panel.example.com",
         "REMNAWAVE_API_TOKEN_READ": "your_read_token"
@@ -307,7 +310,7 @@ Publishing is automated by `.github/workflows/release.yml`, which runs on any pu
 tag and publishes via [npm trusted publishing](https://docs.npmjs.com/trusted-publishers)
 (OIDC) — no token or secret required, with provenance generated automatically.
 
-One-time setup on npmjs.com → package `remnawave-mcp` → Settings → Trusted Publisher: add a
+One-time setup on npmjs.com → package `@folexz/remnawave-mcp` → Settings → Trusted Publisher: add a
 GitHub Actions publisher with repository `folexz/remnawave-mcp` and workflow `release.yml`.
 
 ```bash
