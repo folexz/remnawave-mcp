@@ -21,9 +21,11 @@ newer spec at `npm run build-spec` and the tool surface follows.
 
 ## Highlights
 
-- **Spec-driven.** `scripts/build-spec.ts` dereferences the OpenAPI document into a compact
-  operation catalogue; every tool's input schema comes straight from the operation's
-  parameters and request body. Nothing about the API is written by hand.
+- **Spec-driven, and self-updating.** `npm run update-spec` fetches the newest OpenAPI document
+  from Remnawave's own published copy and rebuilds the catalogue; every tool's input schema
+  comes straight from the operation's parameters and request body. Nothing about the API is
+  written by hand, and the rebuild prints a diff naming every operation added, removed or
+  renamed, so a version bump cannot silently drop a tool.
 - **Bounded context cost.** 205 typed tools would cost ~39k tokens of `tools/list` on every
   request. The default profile exposes **5 tools** (~1.4k tokens) and still reaches every
   operation — see [Why not 205 tools](#why-not-205-tools).
@@ -35,6 +37,9 @@ newer spec at `npm run build-spec` and the tool surface follows.
   and restart Xray. Bulk and delete operations additionally require `confirm: true`.
 - **Field notes baked in.** The gotchas below are attached to the operations they affect, so
   they appear in the tool description and in `remnawave_describe_operation` output.
+- **No requests that cannot succeed.** 16 endpoints (auth, passkeys, API-token management) are
+  served only to a logged-in admin JWT and reject API tokens. They are detected from the spec
+  and refused locally with an explanation instead of being sent.
 - **Escape hatches.** `remnawave_request_read` / `remnawave_request_write` reach any path,
   including undocumented routes and query syntax OpenAPI cannot express.
 
@@ -73,6 +78,7 @@ All configuration is environment variables supplied by your MCP host. No files a
 | `REMNAWAVE_MAX_RETRIES`            | no       | `3`       | Retries on transport failures, 429 and 5xx.                                                  |
 | `REMNAWAVE_TIMEOUT_MS`             | no       | `30000`   | Per-request timeout.                                                                         |
 | `REMNAWAVE_SKIP_CONFIRM`           | no       | `0`       | `1` removes the `confirm: true` requirement on destructive operations.                       |
+| `REMNAWAVE_ALLOW_ADMIN_JWT_OPS`    | no       | `0`       | `1` allows the 16 admin-JWT-only endpoints (set only if your token is an admin JWT).         |
 
 ## Register with Claude Code
 
@@ -179,7 +185,15 @@ in the tool descriptions.
   updated in the same call.
 - **`serverDescription` on a host is capped at 30 characters** (confirmed by `maxLength` in the
   spec). It is also what makes a Hysteria2 host render properly in Happ instead of raw JSON.
-- **`GET /api/tokens/scopes` is admin-JWT only** — an API token gets 401/403. Expected.
+- **Sixteen endpoints are admin-JWT only** — the whole `auth` and `passkeys` controllers plus
+  API-token management (`GET/POST /api/tokens`, `DELETE /api/tokens/{uuid}`,
+  `GET /api/tokens/scopes`). The panel answers an API token with 401/403 there. This server
+  detects them from the spec and refuses locally; `REMNAWAVE_ALLOW_ADMIN_JWT_OPS=1` lifts the
+  gate if the token you configured really is an admin JWT.
+- **`GET /api/users/stream` answers with newline-delimited JSON**, not one document. It is
+  parsed into an array of user records rather than handed back as a blob of text.
+- **`PATCH /api/hosts` *is* a real partial patch** — `{uuid, serverDescription}` alone works.
+  Only config profiles have the replace-the-whole-thing semantics. Verified live.
 - Errors come back as `{message, errorCode}`; the `errorCode` (e.g. `A061`) is included in this
   server's error text.
 
@@ -266,11 +280,18 @@ Query syntax the spec cannot express:
 
 ```bash
 npm run build
-npm run smoke        # offline: catalogue, write gate, confirm gate, schema collapsing
+npm test            # 50 unit tests + the offline smoke suite
+npm run test:unit   # unit tests alone
 ```
 
-With a panel reachable and a **read** token in the environment, the same script also runs
-live read-only checks (never a mutation):
+The unit tests cover the parts that fail quietly: `$ref` expansion through Remnawave's
+recursive DTOs, tool-name derivation (length budget, determinism, collision detection), the
+catalogue diff, both write gates, the admin-JWT gate, schema collapsing and NDJSON parsing.
+
+### Read-only checks against a real panel
+
+With a panel reachable and a **read** token in the environment, the smoke script also runs live
+read-only calls (never a mutation):
 
 ```bash
 REMNAWAVE_BASE_URL=https://panel.example.com \
@@ -285,6 +306,27 @@ output is safe to paste into an issue.
 Guard-rail checks deliberately point at `http://127.0.0.1:9`, so a gate that ever failed open
 could not reach a real panel.
 
+### Verifying the write path
+
+Reads cannot prove that token routing, the throttle, the confirm gate and partial-patch
+semantics actually work. `scripts/write-check.mjs` proves them on objects nobody is attached
+to, and puts back the one pre-existing object it touches:
+
+```bash
+REMNAWAVE_BASE_URL=https://panel.example.com \
+REMNAWAVE_API_TOKEN_READ="$T" REMNAWAVE_API_TOKEN_WRITE="$T" \
+node scripts/write-check.mjs --i-understand-this-mutates [--host-uuid <uuid>]
+```
+
+It creates an internal squad with no inbounds and no members and deletes it again, then
+rewrites `serverDescription` on one host and restores the original value. It refuses to start
+without the acknowledgement flag, and reports a non-zero exit if anything is left behind.
+
+Against a live 3.3.2 panel it confirmed: the confirm gate holds on a real `DELETE`; a partial
+`PATCH /api/hosts` works; the panel rejects a 31-character `serverDescription`; the original
+value (including `null`) round-trips; and consecutive mutations were spaced 1525 and 1524 ms
+apart against a configured 1500 ms floor.
+
 ## Inspect locally
 
 ```bash
@@ -293,16 +335,63 @@ REMNAWAVE_BASE_URL=https://panel.example.com REMNAWAVE_API_TOKEN_READ=xxx npm ru
 
 ## Updating the API spec
 
-Drop a newer OpenAPI document at `spec/remnawave-openapi.json` (the panel serves it at
-`/openapi.json` / the docs page) and rebuild:
+Everything about the API comes from one file, so tracking a new Remnawave release is one
+command:
 
 ```bash
-npm run build-spec   # -> spec/remnawave-operations.json
-npm run build
+npm run update-spec            # fetch the newest spec + rebuild the catalogue
+npm run update-spec -- --strict  # additionally fail if any operation disappeared or was renamed
+npm run build && npm test      # compile and verify
 ```
 
-Only the derived catalogue is published to npm; the 1.5 MB raw document stays in the repo.
-CI fails if the catalogue is out of date with the spec.
+### Where the spec comes from
+
+`https://cdn.remna.st/docs/openapi.json` — published by Remnawave's own
+`Build&Push OpenAPI Specs` workflow on every upstream tag, so it always describes the newest
+release. Override with `--url <u>` or `REMNAWAVE_SPEC_URL` to pin a different source.
+
+A panel instance is **not** a usable source: docs are disabled unless the deployment turns them
+on, and even then Swagger is mounted at `/backend-tools/swagger`, which the usual reverse proxy
+does not route. Probing a live 3.3.2 panel returned 404 on every conventional spec path.
+
+The download is only written to disk after it parses as an OpenAPI document with a non-empty
+`paths`, so an error page or a captive portal cannot clobber a working spec.
+
+### What to check afterwards
+
+`build-spec` diffs the new catalogue against the previous one and prints every change:
+
+```
+build-spec: Remnawave API v3.4.0 -> 211 operations, 28 controllers, 315 KB
+  methods: DELETE=22 GET=90 PATCH=19 POST=78 PUT=2  admin-JWT-only: 16
+  diff: API version 3.3.2 -> 3.4.0
+  REMOVED — tools that will disappear (1):
+    remnawave_get_old_thing  (GET /api/old-thing)
+  added (7):
+    ...
+```
+
+- **REMOVED / RENAMED** are breaking for anyone whose prompts or scripts name those tools.
+  `--strict` turns them into a non-zero exit, which is the flag automation should use.
+- **added** is safe; the new operations are reachable through `remnawave_call` immediately and
+  get typed tools if their controller is in the active profile.
+- **schema changed** is worth a glance for the operations you actually use.
+
+`npm test` then re-checks that the on-disk catalogue matches a fresh build, that all tool names
+are unique and inside the 64-character budget, and that the guard rails still hold.
+
+### Automating it
+
+```bash
+npm run update-spec -- --strict   # exits non-zero on a breaking catalogue change
+npm test
+npm version minor --no-git-tag-version
+git commit -am "chore: Remnawave API 3.4.0" && git push
+git tag "v$(node -p "require('./package.json').version")" && git push --tags
+```
+
+The pushed tag triggers the release workflow, which republishes to npm. Clients registered with
+`@folexz/remnawave-mcp@latest` pick the new version up on their next launch.
 
 ## Releasing (maintainers)
 
@@ -331,14 +420,27 @@ The workflow fails fast if the tag does not match `package.json`.
 
 ## Known limitations
 
-- Local validation checks required arguments and required bodies only; deep body validation is
-  left to the panel, which returns a precise `errorCode`.
-- `GET /api/users/stream` returns newline-delimited JSON and is returned as a single string.
-- Auth and passkey endpoints are in the catalogue for completeness but require an admin JWT;
-  an API token cannot call most of them.
-- The Prometheus basic-auth metrics endpoint is not part of this spec and is not exposed.
-- The tool catalogue tracks the shipped spec (v3.3.2). A panel on a different minor version may
-  expose routes it does not describe — that is what the escape hatches are for.
+- **Body validation is delegated to the panel.** This server checks only that required
+  arguments and a required `body` are present; it does not validate the body's inner shape
+  against the schema. That is deliberate — the panel already validates every field and answers
+  with a precise `message` + `errorCode` (e.g. `A061`), and duplicating that locally would mean
+  shipping a JSON Schema validator plus a second, inevitably drifting, copy of the rules. The
+  cost is that a malformed body costs one round trip to find out.
+- **The escape hatches bypass the per-operation gates.** `remnawave_request_write` is raw by
+  design: it still requires a write token and still goes through the throttle and the retry
+  logic, but it does not apply the destructive `confirm` gate or the admin-JWT check, because
+  it has no operation to look those up from. Prefer `remnawave_call` unless you need a route
+  the spec does not describe.
+- **Tools are only as current as the shipped spec** (v3.3.2). A panel on a different minor
+  version may expose routes it does not describe; that is what the escape hatches are for.
+  See [Updating the API spec](#updating-the-api-spec).
+- **Admin-JWT endpoints are gated, not implemented.** This server carries API tokens; it does
+  not perform an admin login, hold a session, or refresh a JWT. If you supply an admin JWT as
+  the token and set `REMNAWAVE_ALLOW_ADMIN_JWT_OPS=1`, those 16 endpoints become callable, but
+  expiry and renewal are your problem.
+- **The Prometheus basic-auth metrics endpoint** is not part of this spec and is not exposed.
+- **`write-check.mjs` mutates.** It is a maintainer tool, excluded from `npm test`, and refuses
+  to run without an explicit acknowledgement flag.
 
 ## License
 
