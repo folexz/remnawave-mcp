@@ -282,6 +282,14 @@ await check("GET /api/tokens/scopes (admin-JWT only — 403 is a pass)", async (
   }
 });
 
+await check("typed tool (core profile) reaches the live panel", async () => {
+  const core = buildServer({ ...liveEnv, REMNAWAVE_TOOL_PROFILE: "core" });
+  const tool = core.tools.find((t) => t.name === "remnawave_get_system_health");
+  if (!tool) throw new Error("remnawave_get_system_health not registered under core");
+  const r = await caller(core.handlers)("remnawave_get_system_health", {});
+  return `${core.generatedCount} typed tools; health=${shape(r)}`;
+});
+
 const failed = results.filter((r) => !r.ok);
 console.log(`\n${results.length - failed.length}/${results.length} checks passed`);
 process.exit(failed.length ? 1 : 0);
