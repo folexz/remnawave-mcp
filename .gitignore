@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+
+# Local secrets — never commit tokens
+.env
+.env.*
+!.env.example
+*.local

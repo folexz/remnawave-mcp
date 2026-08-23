@@ -1,0 +1,56 @@
+{
+  "name": "remnawave-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the Remnawave API (v3.3.2) — spec-driven tools, two-token least-privilege auth, tiered tool exposure",
+  "type": "module",
+  "license": "MIT",
+  "author": "folexz",
+  "homepage": "https://github.com/folexz/remnawave-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/folexz/remnawave-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/folexz/remnawave-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "remnawave",
+    "xray",
+    "vpn",
+    "claude"
+  ],
+  "bin": {
+    "remnawave-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "spec/remnawave-operations.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build-spec": "tsx scripts/build-spec.ts",
+    "build": "npm run build-spec && tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "smoke": "tsx scripts/smoke.ts",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
