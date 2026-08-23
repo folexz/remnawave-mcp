@@ -26,7 +26,7 @@ import { buildGeneratedTools } from "./tools/generated.js";
 import { buildGenericTools } from "./tools/generic.js";
 import type { McpTool, ToolHandler } from "./tools/types.js";
 
-export const SERVER_VERSION = "0.1.0";
+export const SERVER_VERSION = "0.1.1";
 
 export function buildServer(env: NodeJS.ProcessEnv = process.env) {
   const config = loadConfig(env);
