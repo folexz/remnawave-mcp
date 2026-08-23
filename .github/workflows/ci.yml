@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild the operation catalogue and verify it is committed
+        run: |
+          npx tsx scripts/build-spec.ts
+          git diff --exit-code spec/remnawave-operations.json \
+            || (echo "::error::spec/remnawave-operations.json is out of date — run 'npm run build-spec' and commit" && exit 1)
+
+      - name: Type-check & compile
+        run: npx tsc
+
+      - name: Offline smoke test
+        run: node scripts/smoke.mjs
+
+      - name: Report tool-list size per profile
+        run: npx tsx scripts/tool-stats.ts

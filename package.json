@@ -36,6 +36,8 @@
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "smoke": "node scripts/smoke.mjs",
+    "test": "node scripts/smoke.mjs",
+    "tool-stats": "tsx scripts/tool-stats.ts",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "prepublishOnly": "npm run build"
   },
