@@ -19,6 +19,15 @@ export async function executeOperation(
 ): Promise<unknown> {
   const args = argsRaw ?? {};
 
+  if (op.adminJwtOnly && !config.allowAdminJwtOps) {
+    throw new RemnawaveError(
+      `'${op.name}' (${op.method.toUpperCase()} ${op.path}) is served only to a logged-in ` +
+        `admin session (JWT); the panel rejects API tokens on it, so the request is not sent. ` +
+        `If the token you configured really is an admin JWT, set ` +
+        `REMNAWAVE_ALLOW_ADMIN_JWT_OPS=1 to allow these ${op.controller} endpoints.`
+    );
+  }
+
   if (op.mutating && !config.canWrite) {
     throw new RemnawaveError(
       `'${op.name}' is a ${op.method.toUpperCase()} operation and this server is running ` +

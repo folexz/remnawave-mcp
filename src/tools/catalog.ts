@@ -172,7 +172,15 @@ export function buildCatalogTools(
       description: op.description,
       mutating: op.mutating,
       destructive: op.destructive,
-      callable: op.mutating ? config.canWrite : true,
+      callable:
+        (op.mutating ? config.canWrite : true) && (!op.adminJwtOnly || config.allowAdminJwtOps),
+      ...(op.adminJwtOnly
+        ? {
+            adminJwtOnly:
+              "the panel rejects API tokens on this endpoint; set " +
+              "REMNAWAVE_ALLOW_ADMIN_JWT_OPS=1 only if your token is an admin JWT",
+          }
+        : {}),
       ...(op.mutating && !config.canWrite
         ? { blocked: "read-only server: set REMNAWAVE_API_TOKEN_WRITE to enable" }
         : {}),

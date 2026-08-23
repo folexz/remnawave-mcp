@@ -31,6 +31,12 @@ export interface Config {
   timeoutMs: number;
   /** When false, destructive (bulk/delete-all/restart-all) operations need `confirm: true`. */
   skipConfirm: boolean;
+  /**
+   * Admin-JWT-only endpoints (auth, passkeys, API-token management) are refused locally,
+   * because an API token cannot call them. Set this when the configured token really is an
+   * admin JWT — the panel accepts either in the same Bearer header.
+   */
+  allowAdminJwtOps: boolean;
 }
 
 /** Controllers exposed as typed tools under the (opt-in) `core` profile. */
@@ -118,5 +124,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     maxRetries: intEnv(env, "REMNAWAVE_MAX_RETRIES", 3),
     timeoutMs: intEnv(env, "REMNAWAVE_TIMEOUT_MS", 30000),
     skipConfirm: boolEnv(env, "REMNAWAVE_SKIP_CONFIRM"),
+    allowAdminJwtOps: boolEnv(env, "REMNAWAVE_ALLOW_ADMIN_JWT_OPS"),
   };
 }

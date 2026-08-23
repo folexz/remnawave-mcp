@@ -1,7 +1,7 @@
 {
   "name": "@folexz/remnawave-mcp",
   "version": "0.1.0",
-  "description": "MCP server for the Remnawave API (v3.3.2) — spec-driven tools, two-token least-privilege auth, tiered tool exposure",
+  "description": "MCP server for the Remnawave API (v3.3.2) \u2014 spec-driven tools, two-token least-privilege auth, tiered tool exposure",
   "type": "module",
   "license": "MIT",
   "author": "folexz",
@@ -32,11 +32,14 @@
   ],
   "scripts": {
     "build-spec": "tsx scripts/build-spec.ts",
+    "fetch-spec": "tsx scripts/fetch-spec.ts",
+    "update-spec": "tsx scripts/fetch-spec.ts",
     "build": "npm run build-spec && tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
+    "test:unit": "tsx --test test/*.test.ts",
     "smoke": "node scripts/smoke.mjs",
-    "test": "node scripts/smoke.mjs",
+    "test": "npm run test:unit && npm run smoke",
     "tool-stats": "tsx scripts/tool-stats.ts",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "prepublishOnly": "npm run build"

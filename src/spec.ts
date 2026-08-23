@@ -30,6 +30,8 @@ export interface OperationDef {
   bodyRequired: boolean;
   mutating: boolean;
   destructive: boolean;
+  /** The panel serves this only to a logged-in admin (JWT); an API token is rejected. */
+  adminJwtOnly: boolean;
   schemaBytes: number;
   inputSchema: Json;
 }
@@ -159,7 +161,11 @@ export function formatOperationLine(op: OperationDef): string {
     ...(op.hasBody ? [op.bodyRequired ? "body" : "body?"] : []),
   ];
   const argHint = args.length ? ` (${args.join(", ")})` : "";
-  const flags = [op.mutating ? "WRITE" : "read", op.destructive ? "DESTRUCTIVE" : null]
+  const flags = [
+    op.mutating ? "WRITE" : "read",
+    op.destructive ? "DESTRUCTIVE" : null,
+    op.adminJwtOnly ? "ADMIN-JWT-ONLY" : null,
+  ]
     .filter(Boolean)
     .join("/");
   return `${op.name}${argHint} [${flags}] — ${op.method.toUpperCase()} ${op.path}${

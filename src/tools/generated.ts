@@ -57,6 +57,12 @@ export function buildGeneratedTools(
       description: [
         op.description,
         `[${op.method.toUpperCase()} ${op.path}]`,
+        ...(op.adminJwtOnly && !config.allowAdminJwtOps
+          ? [
+              "UNAVAILABLE: the panel serves this only to an admin JWT session, not an API " +
+                "token. Calls are refused locally unless REMNAWAVE_ALLOW_ADMIN_JWT_OPS=1.",
+            ]
+          : []),
         ...notes.map((n) => `NOTE: ${n}`),
       ].join("\n"),
       inputSchema,

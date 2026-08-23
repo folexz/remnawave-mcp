@@ -15241,7 +15241,7 @@
   },
   "info": {
     "title": "Remnawave API v3.3.2",
-    "description": "\nRemnawave is a powerful proxy management tool, built on top of Xray-core, with a focus on simplicity and ease of use.\n\n## Resources\n* https://t.me/remnawave\n* https://github.com/remnawave\n* https://docs.rw\n",
+    "description": "\nRemnawave is a powerful proxy managment tool, built on top of Xray-core, with a focus on simplicity and ease of use.\n\n## Resources\n* https://t.me/remnawave\n* https://github.com/remnawave\n* https://docs.rw\n",
     "version": "3.3.2",
     "contact": {},
     "license": {
@@ -42388,203 +42388,6 @@
           "data"
         ]
       },
-      "RemnawaveNotFoundErrorDto": {
-        "type": "object",
-        "properties": {
-          "timestamp": {
-            "type": "string",
-            "description": "Time when the error occurred, in ISO 8601 format."
-          },
-          "path": {
-            "type": "string",
-            "description": "Path of the request that caused the error."
-          },
-          "message": {
-            "type": "string",
-            "enum": [
-              "Requested token not found",
-              "Node not found",
-              "Configuration not found",
-              "User not found",
-              "Host not found",
-              "Users not found",
-              "User with specified params not found",
-              "Admin not found",
-              "Subscription settings not found",
-              "Inbound not found",
-              "Config profile not found",
-              "Internal squad not found",
-              "Config profile inbound not found in specified profile",
-              "Infra provider not found",
-              "OAuth2 provider not found",
-              "Snippet not found",
-              "Subscription template not found",
-              "External squad not found",
-              "Passkey not found",
-              "HWID device not found",
-              "Subscription page config not found",
-              "Job result fetch failed or job not found",
-              "Connected nodes not found",
-              "Node plugin not found",
-              "Metadata not found",
-              "Node integration not found",
-              "Shared list not found"
-            ],
-            "description": "Human-readable error message."
-          },
-          "errorCode": {
-            "type": "string",
-            "enum": [
-              "A007",
-              "A011",
-              "A012",
-              "A025",
-              "A046",
-              "A062",
-              "A063",
-              "A065",
-              "A071",
-              "A076",
-              "A111",
-              "A118",
-              "A124",
-              "A128",
-              "A147",
-              "A162",
-              "A170",
-              "A182",
-              "A191",
-              "A204",
-              "A206",
-              "A218",
-              "A219",
-              "A220",
-              "A226",
-              "A238",
-              "A245"
-            ],
-            "description": "Error code. Possible values:\n\n- `A007` — Requested token not found\n- `A011` — Node not found\n- `A012` — Configuration not found\n- `A025` — User not found\n- `A046` — Host not found\n- `A062` — Users not found\n- `A063` — User with specified params not found\n- `A065` — Admin not found\n- `A071` — Subscription settings not found\n- `A076` — Inbound not found\n- `A111` — Config profile not found\n- `A118` — Internal squad not found\n- `A124` — Config profile inbound not found in specified profile\n- `A128` — Infra provider not found\n- `A147` — OAuth2 provider not found\n- `A162` — Snippet not found\n- `A170` — Subscription template not found\n- `A182` — External squad not found\n- `A191` — Passkey not found\n- `A204` — HWID device not found\n- `A206` — Subscription page config not found\n- `A218` — Job result fetch failed or job not found\n- `A219` — Connected nodes not found\n- `A220` — Node plugin not found\n- `A226` — Metadata not found\n- `A238` — Node integration not found\n- `A245` — Shared list not found"
-          }
-        },
-        "required": [
-          "timestamp",
-          "path",
-          "message",
-          "errorCode"
-        ]
-      },
-      "RemnawaveBadRequestErrorDto": {
-        "type": "object",
-        "properties": {
-          "timestamp": {
-            "type": "string",
-            "description": "Time when the error occurred, in ISO 8601 format."
-          },
-          "path": {
-            "type": "string",
-            "description": "Path of the request that caused the error."
-          },
-          "message": {
-            "type": "string",
-            "enum": [
-              "User username already exists",
-              "User short UUID already exists",
-              "User subscription UUID already exists",
-              "User already disabled",
-              "User already enabled",
-              "Node name already exists",
-              "Node address already exists",
-              "Host remark already exists",
-              "LIMITED and EXPIRED statuses are not allowed to be set manually.",
-              "User hwid device already exists",
-              "User hwid device limit reached",
-              "This name is reserved by Remnawave. Please use a different name.",
-              "Node is disabled",
-              "Name or config is required",
-              "Name or inbounds is required",
-              "Snippet name already exists",
-              "Snippet cannot be empty",
-              "Snippet cannot contain empty objects",
-              "This name is reserved. Please use a different name.",
-              "Template JSON is not allowed for YAML template",
-              "Template YAML is not allowed for JSON template",
-              "Template JSON and YAML cannot be updated simultaneously",
-              "Template name already exists for this type",
-              "Reserved template cannot be deleted",
-              "Template type not allowed",
-              "External squad name already exists",
-              "Name or templates are required",
-              "Passkeys not configured",
-              "Passkeys not enabled. Please enable it first.",
-              "Reserved config name",
-              "Config name already exists",
-              "Reserved subpage config cannot be deleted",
-              "Invalid subscription page config",
-              "Invalid Remnawave injector",
-              "Node plugin name already exists",
-              "One or more provided API token scopes are invalid",
-              "Either nodeUuid or name must be provided",
-              "Start date must be before or equal to end date",
-              "Node integration name already exists",
-              "Shared list name already exists"
-            ],
-            "description": "Human-readable error message."
-          },
-          "errorCode": {
-            "type": "string",
-            "enum": [
-              "A019",
-              "A020",
-              "A021",
-              "A029",
-              "A030",
-              "A033",
-              "A034",
-              "A045",
-              "A089",
-              "A098",
-              "A099",
-              "A144",
-              "A145",
-              "A149",
-              "A152",
-              "A153",
-              "A164",
-              "A166",
-              "A167",
-              "A172",
-              "A173",
-              "A174",
-              "A175",
-              "A176",
-              "A178",
-              "A180",
-              "A189",
-              "A190",
-              "A194",
-              "A195",
-              "A209",
-              "A210",
-              "A212",
-              "A215",
-              "A216",
-              "A223",
-              "A229",
-              "A230",
-              "A235",
-              "A244",
-              "A246"
-            ],
-            "description": "Error code. Possible values:\n\n- `A019` — User username already exists\n- `A020` — User short UUID already exists\n- `A021` — User subscription UUID already exists\n- `A029` — User already disabled\n- `A030` — User already enabled\n- `A033` — Node name already exists\n- `A034` — Node address already exists\n- `A045` — Host remark already exists\n- `A089` — LIMITED and EXPIRED statuses are not allowed to be set manually.\n- `A098` — User hwid device already exists\n- `A099` — User hwid device limit reached\n- `A144` — This name is reserved by Remnawave. Please use a different name.\n- `A145` — This name is reserved by Remnawave. Please use a different name.\n- `A149` — Node is disabled\n- `A152` — Name or config is required\n- `A153` — Name or inbounds is required\n- `A164` — Snippet name already exists\n- `A166` — Snippet cannot be empty\n- `A167` — Snippet cannot contain empty objects\n- `A172` — This name is reserved. Please use a different name.\n- `A173` — Template JSON is not allowed for YAML template\n- `A174` — Template YAML is not allowed for JSON template\n- `A175` — Template JSON and YAML cannot be updated simultaneously\n- `A176` — Template name already exists for this type\n- `A178` — Reserved template cannot be deleted\n- `A180` — Template type not allowed\n- `A189` — External squad name already exists\n- `A190` — Name or templates are required\n- `A194` — Passkeys not configured\n- `A195` — Passkeys not enabled. Please enable it first.\n- `A209` — Reserved config name\n- `A210` — Config name already exists\n- `A212` — Reserved subpage config cannot be deleted\n- `A215` — Invalid subscription page config\n- `A216` — Invalid Remnawave injector\n- `A223` — Node plugin name already exists\n- `A229` — One or more provided API token scopes are invalid\n- `A230` — Either nodeUuid or name must be provided\n- `A235` — Start date must be before or equal to end date\n- `A244` — Node integration name already exists\n- `A246` — Shared list name already exists"
-          }
-        },
-        "required": [
-          "timestamp",
-          "path",
-          "message",
-          "errorCode"
-        ]
-      },
       "RemnawaveInternalServerErrorDto": {
         "type": "object",
         "properties": {
@@ -43008,6 +42811,203 @@
           "message",
           "statusCode",
           "errors"
+        ]
+      },
+      "RemnawaveBadRequestErrorDto": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "Time when the error occurred, in ISO 8601 format."
+          },
+          "path": {
+            "type": "string",
+            "description": "Path of the request that caused the error."
+          },
+          "message": {
+            "type": "string",
+            "enum": [
+              "User username already exists",
+              "User short UUID already exists",
+              "User subscription UUID already exists",
+              "User already disabled",
+              "User already enabled",
+              "Node name already exists",
+              "Node address already exists",
+              "Host remark already exists",
+              "LIMITED and EXPIRED statuses are not allowed to be set manually.",
+              "User hwid device already exists",
+              "User hwid device limit reached",
+              "This name is reserved by Remnawave. Please use a different name.",
+              "Node is disabled",
+              "Name or config is required",
+              "Name or inbounds is required",
+              "Snippet name already exists",
+              "Snippet cannot be empty",
+              "Snippet cannot contain empty objects",
+              "This name is reserved. Please use a different name.",
+              "Template JSON is not allowed for YAML template",
+              "Template YAML is not allowed for JSON template",
+              "Template JSON and YAML cannot be updated simultaneously",
+              "Template name already exists for this type",
+              "Reserved template cannot be deleted",
+              "Template type not allowed",
+              "External squad name already exists",
+              "Name or templates are required",
+              "Passkeys not configured",
+              "Passkeys not enabled. Please enable it first.",
+              "Reserved config name",
+              "Config name already exists",
+              "Reserved subpage config cannot be deleted",
+              "Invalid subscription page config",
+              "Invalid Remnawave injector",
+              "Node plugin name already exists",
+              "One or more provided API token scopes are invalid",
+              "Either nodeUuid or name must be provided",
+              "Start date must be before or equal to end date",
+              "Node integration name already exists",
+              "Shared list name already exists"
+            ],
+            "description": "Human-readable error message."
+          },
+          "errorCode": {
+            "type": "string",
+            "enum": [
+              "A019",
+              "A020",
+              "A021",
+              "A029",
+              "A030",
+              "A033",
+              "A034",
+              "A045",
+              "A089",
+              "A098",
+              "A099",
+              "A144",
+              "A145",
+              "A149",
+              "A152",
+              "A153",
+              "A164",
+              "A166",
+              "A167",
+              "A172",
+              "A173",
+              "A174",
+              "A175",
+              "A176",
+              "A178",
+              "A180",
+              "A189",
+              "A190",
+              "A194",
+              "A195",
+              "A209",
+              "A210",
+              "A212",
+              "A215",
+              "A216",
+              "A223",
+              "A229",
+              "A230",
+              "A235",
+              "A244",
+              "A246"
+            ],
+            "description": "Error code. Possible values:\n\n- `A019` — User username already exists\n- `A020` — User short UUID already exists\n- `A021` — User subscription UUID already exists\n- `A029` — User already disabled\n- `A030` — User already enabled\n- `A033` — Node name already exists\n- `A034` — Node address already exists\n- `A045` — Host remark already exists\n- `A089` — LIMITED and EXPIRED statuses are not allowed to be set manually.\n- `A098` — User hwid device already exists\n- `A099` — User hwid device limit reached\n- `A144` — This name is reserved by Remnawave. Please use a different name.\n- `A145` — This name is reserved by Remnawave. Please use a different name.\n- `A149` — Node is disabled\n- `A152` — Name or config is required\n- `A153` — Name or inbounds is required\n- `A164` — Snippet name already exists\n- `A166` — Snippet cannot be empty\n- `A167` — Snippet cannot contain empty objects\n- `A172` — This name is reserved. Please use a different name.\n- `A173` — Template JSON is not allowed for YAML template\n- `A174` — Template YAML is not allowed for JSON template\n- `A175` — Template JSON and YAML cannot be updated simultaneously\n- `A176` — Template name already exists for this type\n- `A178` — Reserved template cannot be deleted\n- `A180` — Template type not allowed\n- `A189` — External squad name already exists\n- `A190` — Name or templates are required\n- `A194` — Passkeys not configured\n- `A195` — Passkeys not enabled. Please enable it first.\n- `A209` — Reserved config name\n- `A210` — Config name already exists\n- `A212` — Reserved subpage config cannot be deleted\n- `A215` — Invalid subscription page config\n- `A216` — Invalid Remnawave injector\n- `A223` — Node plugin name already exists\n- `A229` — One or more provided API token scopes are invalid\n- `A230` — Either nodeUuid or name must be provided\n- `A235` — Start date must be before or equal to end date\n- `A244` — Node integration name already exists\n- `A246` — Shared list name already exists"
+          }
+        },
+        "required": [
+          "timestamp",
+          "path",
+          "message",
+          "errorCode"
+        ]
+      },
+      "RemnawaveNotFoundErrorDto": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "Time when the error occurred, in ISO 8601 format."
+          },
+          "path": {
+            "type": "string",
+            "description": "Path of the request that caused the error."
+          },
+          "message": {
+            "type": "string",
+            "enum": [
+              "Requested token not found",
+              "Node not found",
+              "Configuration not found",
+              "User not found",
+              "Host not found",
+              "Users not found",
+              "User with specified params not found",
+              "Admin not found",
+              "Subscription settings not found",
+              "Inbound not found",
+              "Config profile not found",
+              "Internal squad not found",
+              "Config profile inbound not found in specified profile",
+              "Infra provider not found",
+              "OAuth2 provider not found",
+              "Snippet not found",
+              "Subscription template not found",
+              "External squad not found",
+              "Passkey not found",
+              "HWID device not found",
+              "Subscription page config not found",
+              "Job result fetch failed or job not found",
+              "Connected nodes not found",
+              "Node plugin not found",
+              "Metadata not found",
+              "Node integration not found",
+              "Shared list not found"
+            ],
+            "description": "Human-readable error message."
+          },
+          "errorCode": {
+            "type": "string",
+            "enum": [
+              "A007",
+              "A011",
+              "A012",
+              "A025",
+              "A046",
+              "A062",
+              "A063",
+              "A065",
+              "A071",
+              "A076",
+              "A111",
+              "A118",
+              "A124",
+              "A128",
+              "A147",
+              "A162",
+              "A170",
+              "A182",
+              "A191",
+              "A204",
+              "A206",
+              "A218",
+              "A219",
+              "A220",
+              "A226",
+              "A238",
+              "A245"
+            ],
+            "description": "Error code. Possible values:\n\n- `A007` — Requested token not found\n- `A011` — Node not found\n- `A012` — Configuration not found\n- `A025` — User not found\n- `A046` — Host not found\n- `A062` — Users not found\n- `A063` — User with specified params not found\n- `A065` — Admin not found\n- `A071` — Subscription settings not found\n- `A076` — Inbound not found\n- `A111` — Config profile not found\n- `A118` — Internal squad not found\n- `A124` — Config profile inbound not found in specified profile\n- `A128` — Infra provider not found\n- `A147` — OAuth2 provider not found\n- `A162` — Snippet not found\n- `A170` — Subscription template not found\n- `A182` — External squad not found\n- `A191` — Passkey not found\n- `A204` — HWID device not found\n- `A206` — Subscription page config not found\n- `A218` — Job result fetch failed or job not found\n- `A219` — Connected nodes not found\n- `A220` — Node plugin not found\n- `A226` — Metadata not found\n- `A238` — Node integration not found\n- `A245` — Shared list not found"
+          }
+        },
+        "required": [
+          "timestamp",
+          "path",
+          "message",
+          "errorCode"
         ]
       },
       "RemnawaveUserUsageStreamMessageDto": {

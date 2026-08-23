@@ -163,6 +163,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -197,6 +198,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -231,6 +233,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -265,6 +268,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -298,6 +302,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -331,6 +336,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -364,6 +370,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -397,6 +404,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 553,
    "inputSchema": {
     "type": "object",
@@ -448,6 +456,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -481,6 +490,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -514,6 +524,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -547,6 +558,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 165,
    "inputSchema": {
     "type": "object",
@@ -579,6 +591,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -603,6 +616,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -636,6 +650,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -667,6 +682,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": true,
    "schemaBytes": 217,
    "inputSchema": {
     "type": "object",
@@ -705,6 +721,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 283,
    "inputSchema": {
     "type": "object",
@@ -748,6 +765,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -781,6 +799,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -814,6 +833,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": true,
    "schemaBytes": 339,
    "inputSchema": {
     "type": "object",
@@ -848,6 +868,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -879,6 +900,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -901,6 +923,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -929,6 +952,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1045,
    "inputSchema": {
     "type": "object",
@@ -989,6 +1013,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1355,
    "inputSchema": {
     "type": "object",
@@ -1056,6 +1081,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 804,
    "inputSchema": {
     "type": "object",
@@ -1107,6 +1133,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 987,
    "inputSchema": {
     "type": "object",
@@ -1163,6 +1190,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 862,
    "inputSchema": {
     "type": "object",
@@ -1214,6 +1242,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1236,6 +1265,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1260,6 +1290,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1293,6 +1324,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1326,6 +1358,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -1360,6 +1393,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 108,
    "inputSchema": {
     "type": "object",
@@ -1391,6 +1425,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 108,
    "inputSchema": {
     "type": "object",
@@ -1422,6 +1457,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 108,
    "inputSchema": {
     "type": "object",
@@ -1451,6 +1487,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1475,6 +1512,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -1507,6 +1545,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1529,6 +1568,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1553,6 +1593,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1591,6 +1632,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 683,
    "inputSchema": {
     "type": "object",
@@ -1669,6 +1711,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1694,6 +1737,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 300,
    "inputSchema": {
     "type": "object",
@@ -1731,6 +1775,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 110,
    "inputSchema": {
     "type": "object",
@@ -1763,6 +1808,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 325,
    "inputSchema": {
     "type": "object",
@@ -1798,6 +1844,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1820,6 +1867,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1844,6 +1892,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1875,6 +1924,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -1899,6 +1949,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1932,6 +1983,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -1971,6 +2023,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1355,
    "inputSchema": {
     "type": "object",
@@ -2034,6 +2087,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2058,6 +2112,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2091,6 +2146,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -2122,6 +2178,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2146,6 +2203,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2177,6 +2235,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2199,6 +2258,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2223,6 +2283,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 165,
    "inputSchema": {
     "type": "object",
@@ -2262,6 +2323,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 683,
    "inputSchema": {
     "type": "object",
@@ -2340,6 +2402,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2364,6 +2427,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2395,6 +2459,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2417,6 +2482,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2441,6 +2507,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2472,6 +2539,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2494,6 +2562,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2516,6 +2585,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2538,6 +2608,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2562,6 +2633,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 116,
    "inputSchema": {
     "type": "object",
@@ -2594,6 +2666,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 224,
    "inputSchema": {
     "type": "object",
@@ -2637,6 +2710,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 116,
    "inputSchema": {
     "type": "object",
@@ -2666,6 +2740,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2690,6 +2765,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2728,6 +2804,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 683,
    "inputSchema": {
     "type": "object",
@@ -2806,6 +2883,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2828,6 +2906,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2850,6 +2929,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -2874,6 +2954,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -2908,6 +2989,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 305,
    "inputSchema": {
     "type": "object",
@@ -2945,6 +3027,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 170,
    "inputSchema": {
     "type": "object",
@@ -2979,6 +3062,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 116,
    "inputSchema": {
     "type": "object",
@@ -3012,6 +3096,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 172,
    "inputSchema": {
     "type": "object",
@@ -3047,6 +3132,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 139,
    "inputSchema": {
     "type": "object",
@@ -3079,6 +3165,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 170,
    "inputSchema": {
     "type": "object",
@@ -3113,6 +3200,7 @@
    "bodyRequired": true,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 353,
    "inputSchema": {
     "type": "object",
@@ -3158,6 +3246,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3180,6 +3269,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3202,6 +3292,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3224,6 +3315,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3246,6 +3338,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3270,6 +3363,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 84,
    "inputSchema": {
     "type": "object",
@@ -3299,6 +3393,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1040,
    "inputSchema": {
     "type": "object",
@@ -3338,6 +3433,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3360,6 +3456,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3382,6 +3479,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3404,6 +3502,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3426,6 +3525,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3448,6 +3548,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3477,6 +3578,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 683,
    "inputSchema": {
     "type": "object",
@@ -3557,6 +3659,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 116,
    "inputSchema": {
     "type": "object",
@@ -3588,6 +3691,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 114,
    "inputSchema": {
     "type": "object",
@@ -3626,6 +3730,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1235,
    "inputSchema": {
     "type": "object",
@@ -3701,6 +3806,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -3725,6 +3831,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -3758,6 +3865,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -3791,6 +3899,7 @@
    "bodyRequired": false,
    "mutating": false,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -3822,6 +3931,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 577,
    "inputSchema": {
     "type": "object",
@@ -3873,6 +3983,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 2759,
    "inputSchema": {
     "type": "object",
@@ -4076,6 +4187,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 30026,
    "inputSchema": {
     "type": "object",
@@ -5325,6 +5437,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 30158,
    "inputSchema": {
     "type": "object",
@@ -6578,6 +6691,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 848,
    "inputSchema": {
     "type": "object",
@@ -6627,6 +6741,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 607,
    "inputSchema": {
     "type": "object",
@@ -6682,6 +6797,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 757,
    "inputSchema": {
     "type": "object",
@@ -6736,6 +6852,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 629,
    "inputSchema": {
     "type": "object",
@@ -6793,6 +6910,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 523,
    "inputSchema": {
     "type": "object",
@@ -6840,6 +6958,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 358,
    "inputSchema": {
     "type": "object",
@@ -6886,6 +7005,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 3468,
    "inputSchema": {
     "type": "object",
@@ -7075,6 +7195,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 309,
    "inputSchema": {
     "type": "object",
@@ -7120,6 +7241,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 3528,
    "inputSchema": {
     "type": "object",
@@ -7455,6 +7577,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 387,
    "inputSchema": {
     "type": "object",
@@ -7505,6 +7628,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 530,
    "inputSchema": {
     "type": "object",
@@ -7552,6 +7676,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 14074,
    "inputSchema": {
     "type": "object",
@@ -8036,6 +8161,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 631,
    "inputSchema": {
     "type": "object",
@@ -8090,6 +8216,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 2026,
    "inputSchema": {
     "type": "object",
@@ -8200,6 +8327,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 343,
    "inputSchema": {
     "type": "object",
@@ -8244,6 +8372,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 310,
    "inputSchema": {
     "type": "object",
@@ -8290,6 +8419,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 375,
    "inputSchema": {
     "type": "object",
@@ -8344,6 +8474,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 238,
    "inputSchema": {
     "type": "object",
@@ -8380,6 +8511,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 381,
    "inputSchema": {
     "type": "object",
@@ -8429,6 +8561,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1293,
    "inputSchema": {
     "type": "object",
@@ -8498,6 +8631,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1169,
    "inputSchema": {
     "type": "object",
@@ -8561,6 +8695,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 365,
    "inputSchema": {
     "type": "object",
@@ -8608,6 +8743,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 628,
    "inputSchema": {
     "type": "object",
@@ -8667,6 +8803,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 335,
    "inputSchema": {
     "type": "object",
@@ -8701,6 +8838,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -8732,6 +8870,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1834,
    "inputSchema": {
     "type": "object",
@@ -8875,6 +9014,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 604,
    "inputSchema": {
     "type": "object",
@@ -8922,6 +9062,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 287,
    "inputSchema": {
     "type": "object",
@@ -8963,6 +9104,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 628,
    "inputSchema": {
     "type": "object",
@@ -9022,6 +9164,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 344,
    "inputSchema": {
     "type": "object",
@@ -9054,6 +9197,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 29934,
    "inputSchema": {
     "type": "object",
@@ -10307,6 +10451,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 618,
    "inputSchema": {
     "type": "object",
@@ -10364,6 +10509,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 450,
    "inputSchema": {
     "type": "object",
@@ -10407,6 +10553,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 451,
    "inputSchema": {
     "type": "object",
@@ -10450,6 +10597,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 450,
    "inputSchema": {
     "type": "object",
@@ -10493,6 +10641,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 445,
    "inputSchema": {
     "type": "object",
@@ -10551,6 +10700,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 266,
    "inputSchema": {
     "type": "object",
@@ -10593,6 +10743,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 238,
    "inputSchema": {
     "type": "object",
@@ -10631,6 +10782,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 939,
    "inputSchema": {
     "type": "object",
@@ -10683,6 +10835,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 1233,
    "inputSchema": {
     "type": "object",
@@ -10744,6 +10897,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 354,
    "inputSchema": {
     "type": "object",
@@ -10792,6 +10946,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 547,
    "inputSchema": {
     "type": "object",
@@ -10842,6 +10997,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 628,
    "inputSchema": {
     "type": "object",
@@ -10901,6 +11057,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 548,
    "inputSchema": {
     "type": "object",
@@ -10952,6 +11109,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -10983,6 +11141,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 383,
    "inputSchema": {
     "type": "object",
@@ -11033,6 +11192,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 284,
    "inputSchema": {
     "type": "object",
@@ -11074,6 +11234,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 450,
    "inputSchema": {
     "type": "object",
@@ -11114,6 +11275,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 625,
    "inputSchema": {
     "type": "object",
@@ -11171,6 +11333,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 431,
    "inputSchema": {
     "type": "object",
@@ -11211,6 +11374,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 2641,
    "inputSchema": {
     "type": "object",
@@ -11390,6 +11554,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 357,
    "inputSchema": {
     "type": "object",
@@ -11436,6 +11601,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 308,
    "inputSchema": {
     "type": "object",
@@ -11477,6 +11643,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 3291,
    "inputSchema": {
     "type": "object",
@@ -11664,6 +11831,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 618,
    "inputSchema": {
     "type": "object",
@@ -11721,6 +11889,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 253,
    "inputSchema": {
     "type": "object",
@@ -11759,6 +11928,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 554,
    "inputSchema": {
     "type": "object",
@@ -11813,6 +11983,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 1113,
    "inputSchema": {
     "type": "object",
@@ -11881,6 +12052,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 1633,
    "inputSchema": {
     "type": "object",
@@ -11982,6 +12154,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -12015,6 +12188,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -12048,6 +12222,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 301,
    "inputSchema": {
     "type": "object",
@@ -12081,6 +12256,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 483,
    "inputSchema": {
     "type": "object",
@@ -12125,6 +12301,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 232,
    "inputSchema": {
     "type": "object",
@@ -12161,6 +12338,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 386,
    "inputSchema": {
     "type": "object",
@@ -12211,6 +12389,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 294,
    "inputSchema": {
     "type": "object",
@@ -12252,6 +12431,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 297,
    "inputSchema": {
     "type": "object",
@@ -12293,6 +12473,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 463,
    "inputSchema": {
     "type": "object",
@@ -12333,6 +12514,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 638,
    "inputSchema": {
     "type": "object",
@@ -12390,6 +12572,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 413,
    "inputSchema": {
     "type": "object",
@@ -12443,6 +12626,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 635,
    "inputSchema": {
     "type": "object",
@@ -12500,6 +12684,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 12800,
    "inputSchema": {
     "type": "object",
@@ -12888,6 +13073,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": true,
    "schemaBytes": 503,
    "inputSchema": {
     "type": "object",
@@ -12945,6 +13131,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 4382,
    "inputSchema": {
     "type": "object",
@@ -13101,6 +13288,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 300,
    "inputSchema": {
     "type": "object",
@@ -13141,6 +13329,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 62,
    "inputSchema": {
     "type": "object",
@@ -13163,6 +13352,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 1379,
    "inputSchema": {
     "type": "object",
@@ -13252,6 +13442,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 287,
    "inputSchema": {
     "type": "object",
@@ -13295,6 +13486,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 291,
    "inputSchema": {
     "type": "object",
@@ -13339,6 +13531,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 375,
    "inputSchema": {
     "type": "object",
@@ -13388,6 +13581,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 294,
    "inputSchema": {
     "type": "object",
@@ -13431,6 +13625,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 300,
    "inputSchema": {
     "type": "object",
@@ -13474,6 +13669,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 1826,
    "inputSchema": {
     "type": "object",
@@ -13587,6 +13783,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": true,
+   "adminJwtOnly": false,
    "schemaBytes": 578,
    "inputSchema": {
     "type": "object",
@@ -13639,6 +13836,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 261,
    "inputSchema": {
     "type": "object",
@@ -13682,6 +13880,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -13715,6 +13914,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -13748,6 +13948,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 390,
    "inputSchema": {
     "type": "object",
@@ -13796,6 +13997,7 @@
    "bodyRequired": false,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 146,
    "inputSchema": {
     "type": "object",
@@ -13829,6 +14031,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 686,
    "inputSchema": {
     "type": "object",
@@ -13880,6 +14083,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 507,
    "inputSchema": {
     "type": "object",
@@ -13928,6 +14132,7 @@
    "bodyRequired": true,
    "mutating": true,
    "destructive": false,
+   "adminJwtOnly": false,
    "schemaBytes": 354,
    "inputSchema": {
     "type": "object",

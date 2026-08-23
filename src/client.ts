@@ -142,7 +142,9 @@ async function parseResponse(res: Response): Promise<unknown> {
     if (!res.ok) {
       throw new RemnawaveError(truncate(text) || res.statusText, undefined, res.status);
     }
-    return text;
+    // GET /api/users/stream answers with newline-delimited JSON rather than one document.
+    const ndjson = parseNdjson(text, res.headers.get("content-type"));
+    return ndjson ?? text;
   }
 
   if (!res.ok) {
@@ -159,6 +161,30 @@ async function parseResponse(res: Response): Promise<unknown> {
 
   // Every Remnawave endpoint wraps its payload in { "response": ... }.
   return parsed && typeof parsed === "object" && "response" in parsed ? parsed.response : parsed;
+}
+
+/**
+ * Parses newline-delimited JSON into an array of records.
+ *
+ * Returns null when the body is not NDJSON, so the caller can fall back to the raw text.
+ * Blank lines are skipped; a single line that happens to be valid JSON is not treated as
+ * NDJSON, because that case already parsed as a normal document upstream.
+ */
+export function parseNdjson(text: string, contentType?: string | null): unknown[] | null {
+  const declared = /ndjson|jsonlines|json-seq/i.test(contentType ?? "");
+  const lines = text.split("\n").filter((line) => line.trim().length > 0);
+  if (!lines.length) return declared ? [] : null;
+  if (lines.length < 2 && !declared) return null;
+
+  const records: unknown[] = [];
+  for (const line of lines) {
+    try {
+      records.push(JSON.parse(line));
+    } catch {
+      return null; // not NDJSON after all — let the caller keep the raw text
+    }
+  }
+  return records;
 }
 
 function backoffMs(attempt: number): number {

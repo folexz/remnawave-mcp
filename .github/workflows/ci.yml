@@ -32,6 +32,9 @@ jobs:
       - name: Type-check & compile
         run: npx tsc
 
+      - name: Unit tests
+        run: npm run test:unit
+
       - name: Offline smoke test
         run: node scripts/smoke.mjs
 
