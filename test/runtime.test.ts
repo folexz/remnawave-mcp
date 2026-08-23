@@ -11,7 +11,8 @@ import test from "node:test";
 import { parseNdjson, RemnawaveClient, RemnawaveError } from "../src/client.js";
 import { loadConfig, type Config } from "../src/config.js";
 import { collapseSchema, formatOperationLine, loadCatalogue, resolveOperation, buildIndex, searchOperations } from "../src/spec.js";
-import { executeOperation } from "../src/tools/executor.js";
+import { buildCatalogTools } from "../src/tools/catalog.js";
+import { coerceObjectArg, executeOperation } from "../src/tools/executor.js";
 import { buildGeneratedTools } from "../src/tools/generated.js";
 import { buildGenericTools } from "../src/tools/generic.js";
 
@@ -183,6 +184,98 @@ test("a missing required body is caught locally", async () => {
   await assert.rejects(
     () => executeOperation(new RemnawaveClient(config), config, find("remnawave_post_users"), {}),
     /requires a 'body'/
+  );
+});
+
+/* ------------------------------------- JSON-string arguments from clients */
+
+/** Some MCP clients forward untyped arguments verbatim, so `params` arrives as JSON text. */
+const remnawaveCall = (config: Config) => {
+  const handler = buildCatalogTools(new RemnawaveClient(config), config, catalogue).handlers.get(
+    "remnawave_call"
+  );
+  if (!handler) throw new Error("remnawave_call is not registered");
+  return handler;
+};
+
+test("an object argument is passed through, a JSON string is parsed", () => {
+  const params = { userId: "u-1" };
+  // Objects keep the old path — same reference in, same reference out.
+  assert.equal(coerceObjectArg(params, "params"), params);
+  assert.equal(coerceObjectArg(undefined, "params"), undefined);
+  assert.deepEqual(coerceObjectArg("{}", "params"), {});
+  assert.deepEqual(coerceObjectArg('  {"userId":"u-1","tag":"A"}  ', "params"), {
+    userId: "u-1",
+    tag: "A",
+  });
+  assert.throws(() => coerceObjectArg("", "params"), /could not be parsed as JSON \(it was empty\)/);
+});
+
+test("params as an object reaches the request untouched", async () => {
+  const config = cfg();
+  // Past every local gate, so the only thing left to fail is the socket — the point here.
+  await assert.rejects(
+    () => remnawaveCall(config)({ operation: "remnawave_get_users_user_id", params: { userId: "u-1" } }),
+    /Request failed/
+  );
+});
+
+test("params as the string '{}' is parsed instead of refused", async () => {
+  const config = cfg();
+  await assert.rejects(
+    () => remnawaveCall(config)({ operation: "remnawave_get_config_profiles", params: "{}" }),
+    (err: Error) => /Request failed/.test(err.message) && !/must be an object/.test(err.message)
+  );
+});
+
+test("a populated params string is parsed and its fields are used", async () => {
+  const config = cfg();
+  const call = remnawaveCall(config);
+  // Same operation, two strings: the empty one must still trip the path-parameter check,
+  // the populated one must satisfy it — which is only possible if the JSON was really read.
+  await assert.rejects(
+    () => call({ operation: "remnawave_get_users_user_id", params: "{}" }),
+    /Missing required path parameter 'userId'/
+  );
+  await assert.rejects(
+    () => call({ operation: "remnawave_get_users_user_id", params: '{"userId":"u-1"}' }),
+    /Request failed/
+  );
+});
+
+test("a params string that is not JSON says so", async () => {
+  const config = cfg();
+  await assert.rejects(
+    () => remnawaveCall(config)({ operation: "remnawave_get_config_profiles", params: "{oops" }),
+    (err: RemnawaveError) =>
+      /'params' arrived as a string that could not be parsed as JSON/.test(err.message) &&
+      /\{oops/.test(err.message)
+  );
+});
+
+test("a params string that parses to a non-object is named for what it is", async () => {
+  const config = cfg();
+  await assert.rejects(
+    () => remnawaveCall(config)({ operation: "remnawave_get_config_profiles", params: "[1,2]" }),
+    /parses to an array, but 'params' must be an object/
+  );
+});
+
+test("body and query survive the trip as JSON strings", async () => {
+  const config = cfg({ REMNAWAVE_API_TOKEN_WRITE: "w" });
+  const client = new RemnawaveClient(config);
+  // A stringified body clears the required-body gate rather than reading as absent.
+  await assert.rejects(
+    () => executeOperation(client, config, find("remnawave_post_users"), { body: '{"username":"u"}' }),
+    /Request failed/
+  );
+  await assert.rejects(
+    () => executeOperation(client, config, find("remnawave_post_users"), { body: '"' }),
+    /'body' arrived as a string that could not be parsed as JSON/
+  );
+  await assert.rejects(
+    () => executeOperation(client, config, find("remnawave_get_users"), { query: "{not json}" }),
+    /'query' arrived as a string that could not be parsed as JSON/
   );
 });
 

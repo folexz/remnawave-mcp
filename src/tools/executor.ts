@@ -11,13 +11,51 @@ import { RemnawaveError } from "../client.js";
 import type { Config } from "../config.js";
 import type { OperationDef } from "../spec.js";
 
+/**
+ * Object arguments are not always objects by the time they reach us.
+ *
+ * Some MCP clients forward untyped tool arguments verbatim, without parsing the JSON they
+ * contain, so `params: "{}"` arrives where `params: {}` was meant. Refusing those makes
+ * every operation uncallable from such a client, so a string is parsed once here and the
+ * result carries on as if it had arrived parsed. Anything that is not a string is returned
+ * untouched — the original code path.
+ *
+ * Every Remnawave request body and every query bag is a JSON object, so a string that
+ * parses to something else (array, number, null) is still an error — just a legible one.
+ */
+export function coerceObjectArg(value: unknown, label: string): any {
+  if (typeof value !== "string") return value;
+
+  const text = value.trim();
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    throw new RemnawaveError(
+      `'${label}' arrived as a string that could not be parsed as JSON` +
+        (text ? `: ${text.length > 120 ? `${text.slice(0, 120)}…` : text}` : " (it was empty)") +
+        `. Pass '${label}' as an object, or as its exact JSON text — e.g. ${label}={}.`
+    );
+  }
+
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    const got = Array.isArray(parsed) ? "an array" : parsed === null ? "null" : `a ${typeof parsed}`;
+    throw new RemnawaveError(
+      `'${label}' arrived as a string that parses to ${got}, but '${label}' must be an ` +
+        `object. Pass '${label}' as an object, e.g. ${label}={}.`
+    );
+  }
+
+  return parsed;
+}
+
 export async function executeOperation(
   client: RemnawaveClient,
   config: Config,
   op: OperationDef,
-  argsRaw: Record<string, any> | undefined
+  argsRaw: Record<string, any> | string | undefined
 ): Promise<unknown> {
-  const args = argsRaw ?? {};
+  const args: Record<string, any> = coerceObjectArg(argsRaw, "arguments") ?? {};
 
   if (op.adminJwtOnly && !config.allowAdminJwtOps) {
     throw new RemnawaveError(
@@ -58,7 +96,8 @@ export async function executeOperation(
   }
   // Anything the spec did not declare but the caller supplied under `query` is passed through;
   // Remnawave's filter syntax (filters[0][id]=...) is not expressible as OpenAPI parameters.
-  if (args.query && typeof args.query === "object") Object.assign(query, args.query);
+  const extraQuery = coerceObjectArg(args.query, "query");
+  if (extraQuery) Object.assign(query, extraQuery);
 
   const missingRequired = (op.inputSchema.required ?? []).filter(
     (key: string) => key !== "body" && args[key] === undefined
@@ -69,7 +108,8 @@ export async function executeOperation(
         `Call remnawave_describe_operation with operation="${op.name}" for the full schema.`
     );
   }
-  if (op.hasBody && op.bodyRequired && args.body === undefined) {
+  const body = op.hasBody ? coerceObjectArg(args.body, "body") : undefined;
+  if (op.hasBody && op.bodyRequired && body === undefined) {
     throw new RemnawaveError(
       `${op.name} requires a 'body' object. Call remnawave_describe_operation with ` +
         `operation="${op.name}" for the full request-body schema.`
@@ -78,7 +118,7 @@ export async function executeOperation(
 
   return client.request(op.method, resolvedPath, {
     query,
-    body: op.hasBody ? args.body : undefined,
+    body,
     mode: op.mutating ? "write" : "read",
   });
 }

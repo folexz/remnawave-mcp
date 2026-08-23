@@ -254,6 +254,10 @@ Browse and call without any typed tools:
                  "params": { "uuid": "…" } } }
 ```
 
+`params`, `body` and `query` may also arrive as JSON text — `"params": "{\"uuid\":\"…\"}"` —
+because some MCP clients forward untyped tool arguments verbatim instead of parsing them.
+The string is parsed for you; one that is not JSON is refused with a message that says so.
+
 Editing a config profile safely (the `A061` trap):
 
 ```jsonc

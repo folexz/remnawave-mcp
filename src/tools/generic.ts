@@ -7,6 +7,7 @@
  *   remnawave_request_write — POST/PATCH/PUT/DELETE, write token, only when writes are on.
  */
 import type { RemnawaveClient } from "../client.js";
+import { coerceObjectArg } from "./executor.js";
 import type { Config } from "../config.js";
 import type { McpTool, ToolHandler, ToolSet } from "./types.js";
 
@@ -44,7 +45,8 @@ export function buildGenericTools(client: RemnawaveClient, config: Config): Tool
   handlers.set("remnawave_request_read", async (args) => {
     const path = String(args?.path ?? "");
     if (!path.startsWith("/")) throw new Error("path must start with '/'");
-    return client.request("GET", path, { query: args?.query, mode: "read" });
+    const query = coerceObjectArg(args?.query, "query");
+    return client.request("GET", path, { query, mode: "read" });
   });
 
   if (config.canWrite) {
@@ -85,7 +87,9 @@ export function buildGenericTools(client: RemnawaveClient, config: Config): Tool
         throw new Error("method must be POST, PATCH, PUT or DELETE");
       }
       if (!path.startsWith("/")) throw new Error("path must start with '/'");
-      return client.request(method, path, { body: args?.body, query: args?.query, mode: "write" });
+      const body = coerceObjectArg(args?.body, "body");
+      const query = coerceObjectArg(args?.query, "query");
+      return client.request(method, path, { body, query, mode: "write" });
     });
   }
 

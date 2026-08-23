@@ -19,7 +19,7 @@ import {
   searchOperations,
   type Catalogue,
 } from "../spec.js";
-import { executeOperation } from "./executor.js";
+import { coerceObjectArg, executeOperation } from "./executor.js";
 import type { McpTool, ToolHandler, ToolSet } from "./types.js";
 
 const LIST_LIMIT_DEFAULT = 60;
@@ -215,7 +215,9 @@ export function buildCatalogTools(
           type: "object",
           description:
             "Arguments: path parameters and query parameters as top-level keys, the request " +
-            "body under 'body'. Undeclared query keys may be passed under 'query'.",
+            "body under 'body'. Undeclared query keys may be passed under 'query'. " +
+            "A JSON string is accepted here too and parsed for you, for clients that cannot " +
+            "send nested objects.",
           additionalProperties: true,
         },
       },
@@ -243,7 +245,8 @@ export function buildCatalogTools(
           " Use remnawave_list_operations to browse."
       );
     }
-    return executeOperation(client, config, op, (args?.params ?? {}) as Record<string, any>);
+    const params = (coerceObjectArg(args?.params, "params") ?? {}) as Record<string, any>;
+    return executeOperation(client, config, op, params);
   });
 
   return { tools, handlers };
