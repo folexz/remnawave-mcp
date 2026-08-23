@@ -395,19 +395,42 @@ The pushed tag triggers the release workflow, which republishes to npm. Clients 
 
 ## Releasing (maintainers)
 
-Publishing is automated by `.github/workflows/release.yml`, which runs on any pushed `vX.Y.Z`
-tag and publishes via [npm trusted publishing](https://docs.npmjs.com/trusted-publishers)
-(OIDC) — no token or secret required, with provenance generated automatically.
+### First publish — necessarily manual
 
-One-time setup on npmjs.com → package `@folexz/remnawave-mcp` → Settings → Trusted Publisher: add a
-GitHub Actions publisher with repository `folexz/remnawave-mcp` and workflow `release.yml`.
+npm cannot configure a trusted publisher for a package that does not exist yet: the setting
+lives on the package's own settings page. That is a known, still-open limitation
+([npm/cli#8544](https://github.com/npm/cli/issues/8544)), and it applies to scoped packages
+too. So version 0.1.0 has to go up from a logged-in machine:
 
 ```bash
-npm version patch --no-git-tag-version   # bump via a PR if main is protected
-git tag v0.1.1 && git push origin v0.1.1 # triggers Release -> npm publish
+npm whoami            # must print the account that owns the @folexz scope
+npm publish --access public
 ```
 
-The workflow fails fast if the tag does not match `package.json`.
+`--access public` is required: scoped packages default to restricted.
+
+### Then switch to tokenless releases
+
+Once the package exists, on npmjs.com → `@folexz/remnawave-mcp` → Settings → Trusted Publisher,
+add a GitHub Actions publisher with repository `folexz/remnawave-mcp` and workflow
+`release.yml`. `repository.url` in `package.json` must match the GitHub repository exactly — it
+does.
+
+After that, `.github/workflows/release.yml` publishes on any pushed `vX.Y.Z` tag via OIDC — no
+token, no secret, with provenance attached automatically:
+
+```bash
+npm version patch --no-git-tag-version
+git commit -am "chore: v0.1.1"
+git push
+git tag v0.1.1 && git push origin v0.1.1
+```
+
+The workflow reinstalls from the lockfile, rebuilds, runs the unit tests and the offline smoke
+suite, and fails fast if the tag does not match `package.json`.
+
+Clients registered with `@folexz/remnawave-mcp@latest` pick the new version up on their next
+launch.
 
 ## Security notes
 
