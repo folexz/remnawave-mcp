@@ -35,7 +35,7 @@
     "build": "npm run build-spec && tsc",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "smoke": "tsx scripts/smoke.ts",
+    "smoke": "node scripts/smoke.mjs",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "prepublishOnly": "npm run build"
   },

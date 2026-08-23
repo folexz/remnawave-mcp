@@ -81,7 +81,7 @@ async function main() {
   // stderr only — stdout carries the MCP JSON-RPC stream.
   console.error(
     `remnawave-mcp ${SERVER_VERSION} ready against ${config.baseUrl} ` +
-      `(${catalogue.apiTitle} v${catalogue.apiVersion}, ${catalogue.operationCount} operations)\n` +
+      `(${catalogue.apiTitle}, ${catalogue.operationCount} operations)\n` +
       `  tools: ${tools.length} exposed — profile '${config.profile}' ` +
       `(${generatedCount} typed + catalogue dispatcher + escape hatches)\n` +
       `  write: ${config.canWrite ? "ENABLED" : "off (read-only)"}`

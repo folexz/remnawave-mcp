@@ -36,8 +36,10 @@ export interface Config {
 /** Controllers exposed as typed tools under the (opt-in) `core` profile. */
 export const CORE_CONTROLLERS = [
   "users",
+  "users-bulk-actions",
   "nodes",
   "hosts",
+  "hosts-bulk-actions",
   "config-profiles",
   "internal-squads",
   "system",
